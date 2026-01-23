@@ -1,2 +1,2 @@
 # amcndag.github.io
-website
+Amanda Go's GithHub Pages Website
