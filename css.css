@@ -1,0 +1,97 @@
+header{
+    background-color: red;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 85%;
+    height: 80px;
+    padding-left: 15%;
+    padding-block: 10px;
+}
+
+header p{
+    text-align: center;
+    font-size: 30px;
+    margin-block: 15px;
+}
+
+header nav{
+    background-color: black;
+    justify-content: space-evenly;
+    display: flex;
+    position: relative;
+    top: 10px;
+}
+
+header nav button{
+    background-color: blue;
+    text-align: center;
+    font-size: 20px;
+    color: white;
+    height: 45px;
+    width: 200px;
+}
+
+#jumpMenu{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 15%;
+    height: 100vh;
+    background-color: rgb(209, 165, 54);
+    float: left;
+    text-align: center;
+    z-index: 1;
+}
+
+#jumpMenu a{
+    line-height: 3em;
+}
+
+h1{
+    text-align: center;
+    padding-top: 10%;
+    padding-left: 15%;
+    font-size: 3em;
+}
+
+#container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: stretch;
+    justify-content: space-evenly;
+    margin-left: 15%;
+    padding-inline: 40px;
+    row-gap: 15px;
+    column-gap: 5px;
+    flex: auto;
+}
+
+#container article{
+    padding-bottom: 5%;
+    padding-inline: 15px;
+    height: auto;
+    width: 250px;
+    flex: auto;
+    text-align: justify;
+}
+
+#thanks{
+    position: fixed;
+    background-color: rgb(245, 180, 191);
+    margin-bottom: 0px;
+    padding-block: 15px;
+    padding-inline: 20px;
+    bottom: 0px;
+    right: 0px;
+    border: 2px solid plum;
+    font-size: 20px;
+    text-align: center;
+}
+
+footer{
+    margin-left: 15%;
+    padding-inline: 20px;
+    margin-bottom: 75px;
+}
