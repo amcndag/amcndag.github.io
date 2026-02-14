@@ -1,0 +1,115 @@
+* {
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0px;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 1em;
+}
+
+.grid{
+    display: grid;
+    grid-template-areas:
+    'header'
+    'contactInfo'
+    'objective'
+    'education'
+    'projects'
+    'skills';
+    gap: 15px;
+}
+
+header{
+    grid-area: header;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 1.2em;
+    text-align: center;
+    margin-top: 0px;
+    background-color: lavender;
+    width: 100%;
+    height: auto;
+    padding: 5px;
+}
+
+#name{
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 2.5em;
+}
+
+#contactInfo{
+    grid-area: contactInfo;
+    margin-top: 0px;
+    text-align: center;
+}
+
+#linkedIn a{
+    text-decoration: none;
+}
+
+#objective{
+    grid-area: objective;
+    margin-inline: 30px;
+}
+
+#education{
+    grid-area: education;
+    margin-inline: 30px;
+}
+
+#projects{
+    grid-area: projects;
+    margin-inline: 30px;
+    margin-bottom: 50px;
+}
+
+#skills{
+    grid-area: skills;
+    background-color: purple;
+    color: white;
+    padding: 5px;
+    padding-left: 15px;
+    width: 100%;
+    height: auto;
+}
+
+#skills ul{
+    list-style-type: none;
+    padding-left: 0px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+@media (min-width: 1920px){
+    .grid{
+        grid-template-columns: 1fr 5fr;
+        grid-template-areas:
+        'skills header'
+        'skills contactInfo'
+        'skills objective'
+        'skills education'
+        'skills projects';
+        align-items: start;
+        gap: 0px;
+    }
+
+    header{
+        font-size: 2em;
+        width: 100%;
+    }
+
+    #contactInfo, #objective, #education, #projects{
+        font-size: 1.5em;
+    }
+
+    #skills{
+        background-color: purple;
+        align-self: stretch;
+        font-size: 1.5em;
+        height: 100vh;
+        position: sticky;
+        top: 0px;
+    }
+}
