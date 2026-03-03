@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="asyncJS.css">
+        <script src="asyncJS.js"></script>
+        <title>Pokemon Assignment</title>
+    </head>
+
+    <body>
+        <h1>Pokemon Team Manager</h1>
+
+        <div id="userInterface">
+            <h2>Name or ID</h2>
+            <input type="text" id="input">
+            <button onclick="findPokemon()" id="find" type="button">Find</button>
+
+            <div id="pokemonInfo">
+                <img id="sprite" src="pokeball.webp" alt="pokemon image">
+                <audio controls>
+                    <source id="cry" src="" type="audio/mpeg">
+                </audio>
+                <div id="pokemonMoves">
+                    <select class="moves" name="move1" id="move1"></select>
+                    <select class="moves" name="move2" id="move2"></select>
+                    <select class="moves" name="move3" id="move3"></select>
+                    <select class="moves" name="move4" id="move4"></select>
+                </div>
+
+                <button onclick="addToTeam()" id="add" type="button">Add to Team</button>
+            </div>
+
+            <div id="team" class="hidden">
+                <h2>My Team</h2>
+                <div id="myTeam"></div>
+            </div>
+        </div>
+    </body>
+
+</html>
