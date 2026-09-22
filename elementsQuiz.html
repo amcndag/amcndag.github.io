@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="elementsQuiz.css">
+        <script src="elementsQuiz.js"></script>
+        <title>Periodic Table of Elements</title>
+    </head>
+
+    <body>
+        <h1>Periodic Table of Elements</h1>
+
+        <div id="userInterface">
+            <h2>Element</h2>
+            <div id="question" class="hidden">
+
+            </div>
+            <button onclick="findElement()" id="find" type="button">Generate</button>
+
+            <h2>Answer</h2>
+            <input type="text" id="input">
+            <button onclick="enterAnswer()" id="enter" type="button">Submit</button>
+
+            <div id="feedback" class="hidden">
+                
+            </div>
+
+        </div>
+    </body>
+
+</html>
