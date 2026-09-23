@@ -102,8 +102,35 @@ function enterAnswer(){
 
     } else {
         feedbackDiv.style.color = "red";
-        feedbackDiv.textContent = `Incorrect. The correct answer was ${displayCorrect}.`;
+        feedbackDiv.textContent = `Incorrect. Try again or press skip.`;
 
+        document.getElementById("input").value = "";
         document.getElementById("skip").classList.remove("hidden");
     }
+}
+
+function skipElement(){
+    let displayCorrect = "";
+
+    // check which game mode we are in and display the correct answer type
+    if(currentMode === 'guessName'){
+        displayCorrect = currentElement.name;
+    }
+    else{
+        displayCorrect = currentElement.symbol;
+    }
+
+    const feedbackDiv = document.getElementById("feedback"); // get the feedback div
+    feedbackDiv.classList.remove("hidden"); // unhide it
+
+    // display the correct answer after a skip
+    feedbackDiv.style.color = "black";
+    feedbackDiv.textContent = `The correct answer was ${displayCorrect}.`
+
+    // rehide skip button
+    document.getElementById("skip").classList.add("hidden"); // rehide the skip button
+
+    setTimeout(() => { // after a set time
+            findElement(); // call findElement function again
+    }, 3000);
 }
