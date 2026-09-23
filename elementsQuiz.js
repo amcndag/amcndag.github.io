@@ -112,6 +112,8 @@ function enterAnswer(){
             }
         }, 1000);
 
+        document.getElementById("skip").classList.add("hidden"); // rehide the skip button if needed
+
     } else {
         feedbackDiv.style.color = "red";
         feedbackDiv.textContent = `Incorrect. Try again or press skip.`;
