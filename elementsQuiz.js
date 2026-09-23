@@ -7,7 +7,7 @@ let currentMode = ""; // holds the question state
 
 window.addEventListener("DOMContentLoaded", () => { // when the dom content loads
     findElement(); // call findElement function
-})
+});
 
 function findElement(){
     const element = getRandomNumber();
