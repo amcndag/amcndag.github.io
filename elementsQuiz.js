@@ -1,5 +1,5 @@
 function getRandomNumber() {
-  return Math.floor(Math.random() * 118) + 1;
+  return Math.floor(Math.random() * 100) + 1;
 }
 
 let currentElement = null; // holds the element generated
