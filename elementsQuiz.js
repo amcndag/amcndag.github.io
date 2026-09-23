@@ -5,6 +5,10 @@ function getRandomNumber() {
 let currentElement = null; // holds the element globally
 let currentMode = ""; // holds the question state
 
+window.addEventListener("DOMContentLoaded", () => { // when the dom content loads
+    findElement(); // call findElement function
+})
+
 function findElement(){
     const element = getRandomNumber();
     const cacheData = localStorage.getItem(element); // check if the data is already in localStorage
@@ -13,7 +17,13 @@ function findElement(){
     document.getElementById("feedback").classList.add("hidden");
     document.getElementById("input").value = "";
 
-    currentMode = Math.random() < 0.5 ? 'guessName' : 'guessSymbol';
+
+    if (Math.random() < 0.5){
+        currentMode = 'guessName';
+    }
+    else{
+        currentMode = 'guessSymbol';
+    }
 
     if(cacheData){ // if it is
         const elementdata = JSON.parse(cacheData); // parse the data
@@ -61,7 +71,7 @@ function displayElement(data){
 
 function enterAnswer(){
     if(!currentElement){
-        alert("Please click 'Generate' button first!");
+        alert("Please wait for element to load");
         return;
     }
 
@@ -85,8 +95,15 @@ function enterAnswer(){
     if (userAnswer === correctAnswer) {
         feedbackDiv.style.color = "green";
         feedbackDiv.textContent = `Correct! It is ${displayCorrect}.`;
+
+        setTimeout(() => { // after a set time
+            findElement(); // call findElement function again
+        }, 3000);
+
     } else {
         feedbackDiv.style.color = "red";
         feedbackDiv.textContent = `Incorrect. The correct answer was ${displayCorrect}.`;
+
+        document.getElementById("skip").classList.remove("hidden");
     }
 }
