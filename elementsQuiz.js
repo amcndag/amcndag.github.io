@@ -2,8 +2,9 @@ function getRandomNumber() {
   return Math.floor(Math.random() * 118) + 1;
 }
 
-let currentElement = null; // holds the element globally
+let currentElement = null; // holds the element generated
 let currentMode = ""; // holds the question state
+let countdown = null; // holds the countdown timer
 
 window.addEventListener("DOMContentLoaded", () => { // when the dom content loads
     findElement(); // call findElement function
@@ -93,12 +94,23 @@ function enterAnswer(){
     feedbackDiv.classList.remove("hidden");
 
     if (userAnswer === correctAnswer) {
-        feedbackDiv.style.color = "green";
-        feedbackDiv.textContent = `Correct! It is ${displayCorrect}.`;
 
-        setTimeout(() => { // after a set time
-            findElement(); // call findElement function again
-        }, 3000);
+        let timeLeft = 3; // countdown time setting
+
+        feedbackDiv.style.color = "green";
+        feedbackDiv.innerHTML = `Correct! It is ${displayCorrect}.<br>Next element in ${timeLeft}s.`;
+
+        countdown = setInterval(() => {
+
+            timeLeft--; // decrement the timer
+            if(timeLeft > 0){ // continue to display message, now with changing time
+                feedbackDiv.innerHTML = `Correct! It is ${displayCorrect}.<br>Next element in ${timeLeft}s.`;
+            }
+            else{ // clear the timer and generate new element
+                clearInterval(countdown);
+                findElement();
+            }
+        }, 1000);
 
     } else {
         feedbackDiv.style.color = "red";
@@ -124,13 +136,23 @@ function skipElement(){
     feedbackDiv.classList.remove("hidden"); // unhide it
 
     // display the correct answer after a skip
+    let timeLeft = 3;
+
     feedbackDiv.style.color = "black";
-    feedbackDiv.textContent = `The correct answer was ${displayCorrect}.`
+    feedbackDiv.innerHTML = `The correct answer was ${displayCorrect}.<br>Next element in ${timeLeft}s.`;
 
     // rehide skip button
     document.getElementById("skip").classList.add("hidden"); // rehide the skip button
 
-    setTimeout(() => { // after a set time
-            findElement(); // call findElement function again
-    }, 3000);
+    countdown = setInterval(() => {
+
+            timeLeft--; // decrement the timer
+            if(timeLeft > 0){ // continue to display message, now with changing time
+                feedbackDiv.innerHTML = `The correct answer was ${displayCorrect}.<br>Next element in ${timeLeft}s.`;
+            }
+            else{ // clear the timer and generate new element
+                clearInterval(countdown);
+                findElement();
+            }
+        }, 1000);
 }
