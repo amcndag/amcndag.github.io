@@ -102,6 +102,10 @@ function enterAnswer(event){
         event.preventDefault();
     }
 
+    if(countdown != null){ // if a countdown is happening, do not let them enter an answer
+        return;
+    }
+
     if(!currentElement){
         alert("Please wait for element to load");
         return;
@@ -124,10 +128,6 @@ function enterAnswer(event){
     const feedbackDiv = document.getElementById("feedback");
     feedbackDiv.classList.remove("hidden");
 
-    if(countdown){
-        clearInterval(countdown);
-    }
-
     if (userAnswer === correctAnswer) {
 
         let timeLeft = 3; // countdown time setting
@@ -143,6 +143,7 @@ function enterAnswer(event){
             }
             else{ // clear the timer and generate new element
                 clearInterval(countdown);
+                countdown = null;
                 findElement();
             }
         }, 1000);
@@ -160,6 +161,11 @@ function enterAnswer(event){
 
 function skipElement(){
     let displayCorrect = "";
+
+    if(countdown){
+        clearInterval(countdown);
+        countdown = null;
+    }
 
     // check which game mode we are in and display the correct answer type
     if(currentMode === 'guessName'){
@@ -189,6 +195,7 @@ function skipElement(){
             }
             else{ // clear the timer and generate new element
                 clearInterval(countdown);
+                countdown = null;
                 findElement();
             }
         }, 1000);
