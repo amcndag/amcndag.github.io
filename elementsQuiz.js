@@ -89,7 +89,12 @@ function displayElement(data){
 
 }
 
-function enterAnswer(){
+function enterAnswer(event){
+
+    if(event){
+        event.preventDefault();
+    }
+
     if(!currentElement){
         alert("Please wait for element to load");
         return;
@@ -111,6 +116,10 @@ function enterAnswer(){
 
     const feedbackDiv = document.getElementById("feedback");
     feedbackDiv.classList.remove("hidden");
+
+    if(countdown){
+        clearInterval(countdown);
+    }
 
     if (userAnswer === correctAnswer) {
 
