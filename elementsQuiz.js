@@ -12,6 +12,13 @@ let ledgerCount = 0;
 
 window.addEventListener("DOMContentLoaded", () => { // when the dom content loads
     findElement(); // call findElement function
+
+    // listen for the enter button
+    document.getElementById("input").addEventListener("keydown", (event) => {
+        if(event.key == "Enter"){
+            enterAnswer(event);
+        }
+    });
 });
 
 function findElement(){
