@@ -1,17 +1,36 @@
 function getRandomNumber() {
-  return Math.floor(Math.random() * 100) + 1;
+  return Math.floor(Math.random() * 118) + 1;
 }
 
 let currentElement = null; // holds the element generated
 let currentMode = ""; // holds the question state
 let countdown = null; // holds the countdown timer
 
+// create an array that tracks how many times a number has been generated
+let ledger = new Array(119).fill(0);
+let ledgerCount = 0;
+
 window.addEventListener("DOMContentLoaded", () => { // when the dom content loads
     findElement(); // call findElement function
 });
 
 function findElement(){
-    const element = getRandomNumber();
+    let element = getRandomNumber();
+
+    while(ledger[element] == 3){
+        if(ledgerCount < 354){ // if there are still elements that can be generated
+            element = getRandomNumber(); // go find them
+        }
+        else{
+            // reset everything
+            ledger.fill(0);
+            ledgerCount = 0;
+        }
+    }
+
+    ledger[element] += 1;
+    ledgerCount++;
+
     const cacheData = localStorage.getItem(element); // check if the data is already in localStorage
 
     // Clear previous feedback and input when generating a new question
